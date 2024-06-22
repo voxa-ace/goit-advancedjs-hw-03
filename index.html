@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat Search</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
-    />
-    
-    <script type="module" crossorigin src="/goit-advancedjs-hw-03/commonHelpers.js"></script>
-    <link rel="stylesheet" href="/goit-advancedjs-hw-03/assets/index-897f3c09.css">
-  </head>
-  <body>
-    <div class="container">
-      <p class="loader">Loading...</p>
-      <p class="error" style="display: none">
-        An error occurred. Please try again.
-      </p>
-      <select id="breed-select">
-        <option value="">Select a breed</option>
-      </select>
-      <div class="cat-info" style="display: none">
-        <img id="cat-image" src="" alt="" />
-        <h2 id="cat-name"></h2>
-        <p id="cat-description"></p>
-        <p><strong>Temperament:</strong> <span id="cat-temperament"></span></p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cat Search</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
+  
+  <script type="module" crossorigin src="/goit-advancedjs-hw-03/commonHelpers.js"></script>
+  <link rel="stylesheet" href="/goit-advancedjs-hw-03/assets/index-bf8b0965.css">
+</head>
+<body>
+  <div class="container">
+    <p class="loader">Loading...</p>
+    <p class="error" style="display: none">An error occurred. Please try again.</p>
+    <select id="breed-select" style="display: none;">
+      <option value="">Select a breed</option>
+    </select>      
+    <div class="cat-info" style="display: none">
+      <img id="cat-image" src="" alt="" />
+      <h2 id="cat-name"></h2>
+      <p id="cat-description"></p>
+      <p><strong>Temperament:</strong> <span id="cat-temperament"></span></p>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
-    
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+  
+</body>
 </html>
