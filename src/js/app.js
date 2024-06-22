@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const showLoader = () => {
     loader.classList.add('show');
+    breedSelect.style.display = 'none';
   };
 
   const hideLoader = () => {
@@ -19,16 +20,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const showError = (message) => {
-    errorElem.style.display = 'block';
+    errorElem.textContent = message;
+    errorElem.classList.add('show');
     iziToast.error({ title: 'Error', message: message });
   };
 
   const hideError = () => {
-    errorElem.style.display = 'none';
+    errorElem.classList.remove('show');
+  };
+
+  const clearCatInfo = () => {
+    catInfo.style.display = 'none';
+    catImage.src = '';
+    catName.textContent = '';
+    catDescription.textContent = '';
+    catTemperament.textContent = '';
   };
 
   const loadBreeds = async () => {
     showLoader();
+    hideError();
     try {
       const breeds = await fetchBreeds();
       breeds.forEach(breed => {
@@ -40,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       new SlimSelect({
         select: '#breed-select'
       });
+      breedSelect.style.display = 'block';
     } catch (error) {
       showError('Failed to fetch breeds');
     } finally {
@@ -50,20 +62,27 @@ document.addEventListener('DOMContentLoaded', async () => {
   const handleBreedChange = async (e) => {
     const breedId = e.target.value;
     if (!breedId) return;
-    
+
     showLoader();
-    hideError();
+    hideError(); 
     try {
       const catData = await fetchCatByBreed(breedId);
-      const cat = catData[0];
-      catImage.src = cat.url;
-      catName.textContent = cat.breeds[0].name;
-      catDescription.textContent = cat.breeds[0].description;
-      catTemperament.textContent = cat.breeds[0].temperament;
-      catInfo.style.display = 'block';
+      if (catData.length === 0) {
+        clearCatInfo(); 
+        showError('No cat data found for this breed.');
+      } else {
+        const cat = catData[0];
+        catImage.src = cat.url;
+        catName.textContent = cat.breeds[0].name;
+        catDescription.textContent = cat.breeds[0].description;
+        catTemperament.textContent = cat.breeds[0].temperament;
+        catInfo.style.display = 'block';
+      }
     } catch (error) {
+      clearCatInfo();
       showError('Failed to fetch cat information');
     } finally {
+      breedSelect.style.display = 'block';
       hideLoader();
     }
   };
